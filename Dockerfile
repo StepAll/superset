@@ -19,11 +19,8 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
 RUN rm -rf /etc/apt/sources.list.d/* \
     && rm -rf /var/lib/apt/lists/*
 
-
 COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-
 COPY superset_config.py /app/
-

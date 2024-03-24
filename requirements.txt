@@ -1,2 +1,5 @@
 pyodbc
-gsheetsdb
+
+# for google sheets
+google-auth
+shillelagh
