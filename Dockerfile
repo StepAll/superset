@@ -27,18 +27,3 @@ RUN pip3 install -r requirements.txt
 
 COPY superset_config.py /app/
 
-# docker build -t superset_img . 
-
-# docker compose up
-
-# docker exec -it superset_app superset fab create-admin \
-#               --username admin \
-#               --firstname Superset \
-#               --lastname Admin \
-#               --email admin@superset.com \
-#               --password admin &&
-# docker exec -it superset_app superset db upgrade &&
-# docker exec -it superset_app superset init
-
-# mssql+pyodbc://o.stepanov:,mw(>fwbW2>pU%%@77.223.102.193:13788/levelgroup-ru?driver=ODBC+Driver+17+for+SQL+Server&TrustServerCertificate=yes
-# mssql+pyodbc://o.stepanov:,mw(>fwbW2>pU%%@77.223.102.193:13788/uuniversity?driver=ODBC+Driver+17+for+SQL+Server&TrustServerCertificate=yes
