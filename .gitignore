@@ -1,0 +1,6 @@
+.env
+db_home
+docker
+redis
+superset-frontend
+tests
