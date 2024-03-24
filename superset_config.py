@@ -44,21 +44,33 @@ CURRENCIES = ["USD", "EUR", "RUR", "CNY"]
 
 CACHE_DEFAULT_TIMEOUT = int(timedelta(days=1).total_seconds())
 
-# if env_variable_exists("CACHE_CONFIG__CACHE_REDIS_URL"):
-#     # Superset's own metadata (CACHE_CONFIG)
-#     CACHE_CONFIG = {
-#         'CACHE_TYPE': 'RedisCache',
-#         'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24,  # 1 day default (in secs)
-#         'CACHE_KEY_PREFIX': 'Miracleplus-Superset-Cache-Config',
-#         'CACHE_REDIS_URL': get_env_variable("CACHE_CONFIG__CACHE_REDIS_URL"),
-#     }
 
-# if env_variable_exists("DATA_CACHE_CONFIG__CACHE_REDIS_URL"):
-#     # charting data queried from connected datasources (DATA_CACHE_CONFIG).
-#     DATA_CACHE_CONFIG = {
-#         'CACHE_TYPE': 'RedisCache',
-#         'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24,  # 1 day default (in secs)
-#         'CACHE_KEY_PREFIX': 'Miracleplus-Superset-Data-Cache-Config',
-#         'CACHE_REDIS_URL': get_env_variable("DATA_CACHE_CONFIG__CACHE_REDIS_URL"),
-#     }
+cache_redis_url = 'redis://redis:6379/0'
 
+CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24,  # 1 day default (in secs)
+    'CACHE_KEY_PREFIX': 'superset_results',
+    'CACHE_REDIS_URL': cache_redis_url
+}
+
+FILTER_STATE_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 86400,
+    'CACHE_KEY_PREFIX': 'filter_state_cache',
+    'CACHE_REDIS_URL': cache_redis_url
+}
+
+EXPLORE_FORM_DATA_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 86400,
+    'CACHE_KEY_PREFIX': 'explore_form_data_cache',
+    'CACHE_REDIS_URL': cache_redis_url
+}
+
+DATA_CACHE_CONFIG = {
+    'CACHE_TYPE': 'RedisCache',
+    'CACHE_DEFAULT_TIMEOUT': 60 * 60 * 24,  # 1 day default (in secs)
+    'CACHE_KEY_PREFIX': 'data_cache',
+    'CACHE_REDIS_URL': cache_redis_url
+}

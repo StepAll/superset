@@ -2,6 +2,9 @@
 
 ## Deploy superset on VM with Docker file
 
+[quick start Superset](https://medium.com/towards-data-engineering/quick-setup-configure-superset-with-docker-a5cca3992b28)
+
+
 
 `docker build -t superset_img . `
 
