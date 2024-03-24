@@ -1,0 +1,47 @@
+x-superset-depends-on: &superset-depends-on
+  - redis
+  - db
+
+x-superset-volumes: &superset-volumes
+  # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
+  - ./docker:/app/docker
+  - ./superset-frontend:/app/superset-frontend
+  - ./tests:/app/tests
+  # - ./superset:/app/superset
+  # - ./superset_home:/app/superset_home
+
+version: "4.0"
+services:
+  redis:
+    image: redis:7
+    container_name: superset_cache
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ./redis:/data
+    
+  db:
+    image: postgres:15
+    env_file: .env
+    container_name: superset_db
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ./db_home:/var/lib/postgresql/data
+      - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    
+  superset:
+    # build: .
+    image: superset_img
+    env_file: .env
+    restart: unless-stopped
+    container_name: superset_app
+    environment: 
+      - SUPERSET_SECRET_KEY=qazWrt45
+    ports:
+      - "8088:8088"
+    depends_on: *superset-depends-on
+    volumes: *superset-volumes
+
