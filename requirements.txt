@@ -1,4 +1,5 @@
 pyodbc
+clickhouse-connect
 
 # for google sheets
 google-auth

@@ -34,7 +34,7 @@ services:
     
   superset:
     # build: .
-    image: superset_img
+    image: superset_app
     env_file: .env
     restart: unless-stopped
     container_name: superset_app

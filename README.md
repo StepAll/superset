@@ -6,7 +6,7 @@
 
 
 
-`docker build -t superset_img . `
+`docker build -t superset_app . `
 
 `docker compose up`
 
